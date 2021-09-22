@@ -1,0 +1,17 @@
+{
+  "name": "rtma-url-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "date-builder.js",
+  "dependencies": {
+    "file-system": "^2.2.2",
+    "json-2-csv": "^3.14.4",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
