@@ -1,0 +1,18 @@
+{
+  "name": "balloonwpd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fetch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chroma-js": "^2.4.2",
+    "file-system": "^2.2.2",
+    "jimp": "^0.22.4",
+    "node-fetch": "^2.6.9",
+    "util": "^0.12.5"
+  }
+}
