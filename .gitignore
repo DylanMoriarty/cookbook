@@ -1,3 +1,9 @@
-rtam-date-builder/node_modules/*
-rtam-date-builder/dates.csv
+node_modules/*
+recipes/weather-factory/cooking
+recipes/weather-factory/node_modules
+recipes/weather-factory/temps.mp4
+recipes/weather-factory/gif.gif
+recipes/weather-factory/colorScale.txt
+
+
 .DS_Store
