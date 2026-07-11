@@ -1,6 +1,6 @@
 # mmap
 
-Personal CLI for common geo/data processing commands. Wraps GDAL, OGR, and eventually Node scripts into short, memorable commands.
+CLI for common geo/data processing commands. More intense scripts are written with Claude and then tinkering to make sure they actually work properly. Goal here is to automate INPUT / OUTPUT tasks, and tedious common gdal commands.
 
 ## Setup
 
@@ -10,7 +10,7 @@ npm install
 npm link        # makes `mmap` available globally in your terminal
 ```
 
-That's it. No config files, no PATH editing — `npm link` symlinks the bin into your global node prefix.
+`npm link` symlinks the bin into your global node prefix.
 
 To uninstall later: `npm unlink -g mmap`
 
