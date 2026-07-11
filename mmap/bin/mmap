@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+/**
+ * mmap — personal geo/data CLI
+ *
+ * Usage:
+ *   mmap <command> [args...]   run a command
+ *   mmap --dry-run <command>   print the shell command without running it
+ *   mmap help                  list all commands
+ *   mmap help <command>        describe a specific command
+ */
+
+import chalk from "chalk";
+import { commands } from "../commands/index.js";
+
+const argv = process.argv.slice(2);
+
+// ─── flags ───────────────────────────────────────────────────────────────────
+const dryRunIdx = argv.indexOf("--dry-run");
+const dryRun = dryRunIdx !== -1;
+if (dryRun) argv.splice(dryRunIdx, 1);
+
+const [commandName, ...args] = argv;
+
+// ─── help ─────────────────────────────────────────────────────────────────────
+function printHelp(cmd) {
+  if (cmd && commands[cmd]) {
+    const { meta } = commands[cmd];
+    console.log(`\n  ${chalk.bold(cmd)}`);
+    console.log(`  ${chalk.dim(meta.description)}`);
+    console.log(`\n  Usage: mmap ${chalk.cyan(meta.usage)}\n`);
+    return;
+  }
+
+  console.log(`\n  ${chalk.bold("mmap")}  — personal geo/data CLI\n`);
+  console.log(`  ${chalk.dim("Usage:")} mmap <command> [args...]\n`);
+  console.log(`  ${chalk.underline("Commands:")}\n`);
+
+  for (const [name, mod] of Object.entries(commands)) {
+    console.log(`    ${chalk.cyan(name.padEnd(20))} ${mod.meta.description}`);
+  }
+
+  console.log(`\n  ${chalk.dim("Flags:")}`);
+  console.log(`    ${chalk.cyan("--dry-run")}             print the shell command without executing it`);
+  console.log();
+}
+
+if (!commandName || commandName === "help") {
+  printHelp(args[0]);
+  process.exit(0);
+}
+
+// ─── dispatch ─────────────────────────────────────────────────────────────────
+const mod = commands[commandName];
+
+if (!mod) {
+  console.error(chalk.red(`\n  Unknown command: "${commandName}"\n`));
+  printHelp();
+  process.exit(1);
+}
+
+try {
+  mod.execute(args, { dryRun });
+} catch (err) {
+  console.error(chalk.red(`\nError: ${err.message}\n`));
+  process.exit(1);
+}
