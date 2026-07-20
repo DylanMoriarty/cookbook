@@ -15,6 +15,7 @@ import * as tfw from "./tfw.js";
 import * as hot from "./hot.js";
 import * as quake from "./quake.js";
 import * as bluemarble from "./bluemarble.js";
+import * as dash from "./dashboard.js";
 
 export const commands = {
   rasterizeShp,
@@ -23,4 +24,5 @@ export const commands = {
   hot,
   quake,
   bluemarble,
+  dash,
 };

@@ -67,15 +67,31 @@ Add this to your `~/.zshrc` so `mmap hot tehran` changes your current shell dire
 
 ```zsh
 mmap() {
-  if [[ "$1" == "hot" && -n "$2" && "$2" != "--list" && "$2" != "-l" ]]; then
-    local target
-    target="$(command mmap hot "$2")" || return
-    cd "$target" || return
+  if [[ "$1" == "hot" ]]; then
+    shift
+
+    # Let list/help-style calls behave normally.
+    if [[ -z "$1" || "$1" == "--list" || "$1" == "-l" ]]; then
+      command mmap hot "$@"
+      return
+    fi
+
+    # Ask mmap for a shell-safe cd command and execute it in this shell.
+    local cd_cmd
+    cd_cmd="$(command mmap hot "$1" --cd)" || return
+    eval "$cd_cmd"
     return
   fi
 
   command mmap "$@"
 }
+```
+
+Then reload your shell:
+
+```zsh
+source ~/.zshrc
+type mmap    # should say "mmap is a shell function"
 ```
 
 ---

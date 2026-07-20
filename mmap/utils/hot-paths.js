@@ -1,11 +1,11 @@
+const home = 'moriarty'
+
 export const hotPaths = {
-    this: "/Users/moriartyd/code/cookbook/mmap",
-    scraper: "/Users/moriartyd/code/weather-scrapers-25",
-    tracker: "/Users/moriartyd/code/int_2025_AGJGAHIVQJBJPFMGZNB2AI3YAE_weather-tracker-embed-25"
+    this: `/Users/${home}/code/cookbook/mmap`,
 }
 
 const retiredPaths = {
-    tehran: "/Users/moriartyd/graphics/42-iran/map/data",
-    "iran-wide": "/Users/moriartyd/graphics/42-iran/wide-map",
-    iran: "/Users/moriartyd/code/int_2026_Z4YGOI2B3BCNJAMZ65MNDGR4PU_iran-damage-analysis",
+    tehran: `/Users/${home}/graphics/42-iran/map/data`,
+    "iran-wide": `/Users/${home}/graphics/42-iran/wide-map`,
+    iran: `/Users/${home}/code/int_2026_Z4YGOI2B3BCNJAMZ65MNDGR4PU_iran-damage-analysis`,
 }

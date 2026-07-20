@@ -1,0 +1,72 @@
+:root {
+  color-scheme: light;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f6f7fb;
+  color: #1f2937;
+}
+
+.container {
+  width: min(560px, 92vw);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  resize: vertical;
+}
+
+#geojsonInput {
+  min-height: 160px;
+}
+
+#geeOutput {
+  min-height: 180px;
+  margin-top: 8px;
+  background: #f9fafb;
+}
+
+#convertBtn {
+  margin-top: 12px;
+  margin-bottom: 16px;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #0f766e;
+  color: #ffffff;
+}
+
+#convertBtn:hover {
+  background: #115e59;
+}

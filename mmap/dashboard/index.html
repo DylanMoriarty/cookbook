@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mmap Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>hello world</h1>
+      <label for="geojsonInput">GeoJSON input</label>
+      <textarea id="geojsonInput" placeholder='Paste GeoJSON here, e.g. {"type":"Point","coordinates":[-122.084,37.422]}'></textarea>
+
+      <button id="convertBtn" type="button">convert geojson to GEE object</button>
+
+      <label for="geeOutput">GEE output</label>
+      <textarea id="geeOutput" readonly placeholder="Converted ee.Geometry output appears here"></textarea>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
