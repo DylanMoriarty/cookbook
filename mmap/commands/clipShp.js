@@ -1,7 +1,7 @@
 /**
  * clipShp — clip a shapefile to a bounding box
  *
- * Usage: mmap clipShp <input.shp> <output.shp> <xmin> <ymin> <xmax> <ymax>
+ * Usage: mm clipShp <input.shp> <output.shp> <xmin> <ymin> <xmax> <ymax>
  *
  * Wraps:
  *   ogr2ogr -clipsrc <xmin> <ymin> <xmax> <ymax> <output> <input>
@@ -17,7 +17,7 @@ export function execute(args, opts) {
   const [input, output, xmin, ymin, xmax, ymax] = args;
 
   if (!input || !output || !xmin || !ymin || !xmax || !ymax) {
-    console.error(`Usage: mmap ${meta.usage}`);
+    console.error(`Usage: mm ${meta.usage}`);
     process.exit(1);
   }
 

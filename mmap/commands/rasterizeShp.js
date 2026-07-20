@@ -1,7 +1,7 @@
 /**
  * rasterizeShp — burn a shapefile into a GeoTIFF
  *
- * Usage: mmap rasterizeShp <input.shp> <output.tif> <resolution> [--color <name|#RRGGBB|R,G,B>]
+ * Usage: mm rasterizeShp <input.shp> <output.tif> <resolution> [--color <name|#RRGGBB|R,G,B>]
  *
  * Wraps:
  *   gdal_rasterize -burn 1 -init 0 -a_nodata 0 -ot Byte -of GTiff
@@ -70,12 +70,12 @@ export function execute(args, opts) {
     }
 
     console.error(`Unknown option: ${token}`);
-    console.error(`Usage: mmap ${meta.usage}`);
+    console.error(`Usage: mm ${meta.usage}`);
     process.exit(1);
   }
 
   if (!input || !output || !resolution) {
-    console.error(`Usage: mmap ${meta.usage}`);
+    console.error(`Usage: mm ${meta.usage}`);
     process.exit(1);
   }
 

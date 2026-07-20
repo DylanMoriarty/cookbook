@@ -16,7 +16,7 @@
  * ------------------------------------------------------------
  * USAGE
  * ------------------------------------------------------------
- *   mmap bluemarble --bbox area.geojson --res 0.01 --out clip.tif
+ *   mm bluemarble --bbox area.geojson --res 0.01 --out clip.tif
  *
  * Options:
  *   --bbox    <path>   Path to a GeoJSON file (Polygon, Feature,
@@ -105,7 +105,7 @@ function parseArgs(argv) {
 function printUsageAndExit(code) {
   console.log(`
 Usage:
-  mmap bluemarble --bbox area.geojson [--res 0.01] [--out clip.tif] [--layer BlueMarble_ShadedRelief_Bathymetry]
+  mm bluemarble --bbox area.geojson [--res 0.01] [--out clip.tif] [--layer BlueMarble_ShadedRelief_Bathymetry]
 
 Options:
   --bbox <path>     Path to a GeoJSON file defining the area of interest. Required.
