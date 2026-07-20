@@ -1,7 +1,7 @@
 /**
  * hot — get around quick
  *
- * Usage: mmap hot <proj> | mmap hot --list | eval "$(mmap hot <proj> --cd)"
+ * Usage: mm hot <proj> | mm hot --list | eval "$(mm hot <proj> --cd)"
  *
  * Prints a project path (or a shell-ready cd command).
  */
@@ -29,13 +29,13 @@ export function execute(args, opts) {
   }
 
   if (!proj) {
-    console.error(`Usage: mmap ${meta.usage}`);
+    console.error(`Usage: mm ${meta.usage}`);
     process.exit(1);
   }
 
   if (!projects[proj]) {
     console.error(`Unknown project: ${proj}`);
-    console.error("Run 'mmap hot --list' to see available projects.");
+    console.error("Run 'mm hot --list' to see available projects.");
     process.exit(1);
   }
 

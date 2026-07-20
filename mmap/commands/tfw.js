@@ -1,7 +1,7 @@
 /**
  * tfw — generate a tfw file for a given raster file
  *
- * Usage: mmap tfw <input.tif> <output.tfw>
+ * Usage: mm tfw <input.tif> <output.tfw>
  *
  * Wraps:
  *   gdal_translate -of GTiff -co TFW=YES <input> <output>
@@ -17,7 +17,7 @@ export function execute(args, opts) {
   const [input, output] = args;
 
   if (!input || !output) {
-    console.error(`Usage: mmap ${meta.usage}`);
+    console.error(`Usage: mm ${meta.usage}`);
     process.exit(1);
   }
 

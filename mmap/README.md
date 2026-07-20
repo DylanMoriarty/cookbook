@@ -7,7 +7,7 @@ Personal CLI for common geo/data processing commands. Wraps GDAL, OGR, and event
 ```bash
 cd mmap
 npm install
-npm link        # makes `mmap` available globally in your terminal
+npm link        # makes `mm` available globally in your terminal
 ```
 
 That's it. No config files, no PATH editing — `npm link` symlinks the bin into your global node prefix.
@@ -19,10 +19,10 @@ To uninstall later: `npm unlink -g mmap`
 ## Usage
 
 ```bash
-mmap <command> [args...]
-mmap help                    # list all commands
-mmap help rasterizeShp       # describe one command
-mmap --dry-run <command>     # print the shell command without running it
+mm <command> [args...]
+mm help                    # list all commands
+mm help rasterizeShp       # describe one command
+mm --dry-run <command>     # print the shell command without running it
 ```
 
 ### Commands
@@ -37,44 +37,44 @@ mmap --dry-run <command>     # print the shell command without running it
 
 ```bash
 # Rasterize a shapefile at 10m resolution
-mmap rasterizeShp input.shp output.tif 10
+mm rasterizeShp input.shp output.tif 10
 
 # Rasterize with a custom color
-mmap rasterizeShp input.shp output.tif 10 --color red
+mm rasterizeShp input.shp output.tif 10 --color red
 
 # Preview the gdal_rasterize command without running it
-mmap --dry-run rasterizeShp input.shp output.tif 10
+mm --dry-run rasterizeShp input.shp output.tif 10
 
 # Clip a shapefile to a bounding box
-mmap clipShp input.shp clipped.shp -180 -90 180 90
+mm clipShp input.shp clipped.shp -180 -90 180 90
 
 # Check Blue Marble bbox parsing only
-mmap bluemarble --bbox area.geojson --check-only
+mm bluemarble --bbox area.geojson --check-only
 
 # Fetch Blue Marble imagery clipped to a GeoJSON bbox
-mmap bluemarble --bbox area.geojson --res 0.01 --out output/blue_marble_clip.tif --layer BlueMarble_ShadedRelief_Bathymetry
+mm bluemarble --bbox area.geojson --res 0.01 --out output/blue_marble_clip.tif --layer BlueMarble_ShadedRelief_Bathymetry
 
 # Print a project path shortcut
-mmap hot tehran
+mm hot tehran
 
 # Change directory in your current shell using eval
-eval "$(mmap hot tehran --cd)"
+eval "$(mm hot tehran --cd)"
 ```
 
-### Make mmap hot cd directly in zsh
+### Make mm hot cd directly in zsh
 
-Add this to your `~/.zshrc` so `mmap hot tehran` changes your current shell directory:
+Add this to your `~/.zshrc` so `mm hot tehran` changes your current shell directory:
 
 ```zsh
-mmap() {
+mm() {
   if [[ "$1" == "hot" && -n "$2" && "$2" != "--list" && "$2" != "-l" ]]; then
     local target
-    target="$(command mmap hot "$2")" || return
+    target="$(command mm hot "$2")" || return
     cd "$target" || return
     return
   fi
 
-  command mmap "$@"
+  command mm "$@"
 }
 ```
 
@@ -96,7 +96,7 @@ export function execute(args, opts) {
   const [input, output] = args;
 
   if (!input || !output) {
-    console.error(`Usage: mmap ${meta.usage}`);
+    console.error(`Usage: mm ${meta.usage}`);
     process.exit(1);
   }
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Personal CLI for common geo/data processing commands",
   "bin": {
-    "mmap": "./bin/mmap"
+    "mm": "./bin/mmap"
   },
   "type": "module",
   "scripts": {
