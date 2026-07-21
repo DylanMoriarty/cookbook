@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3 Globe Projection Inspector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="./assets/index-DcDaQaUO.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-V4Vj2J22.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="globe-panel">
+        <h1>Orthographic Globe</h1>
+        <p>Drag to rotate. Wheel or pinch to zoom the globe radius.</p>
+        <div id="globe-container"></div>
+      </section>
+
+      <aside class="control-panel">
+        <h2>Projection Details</h2>
+        <p class="label">Current proj4 string</p>
+        <pre id="proj4-output" class="proj4-readout"></pre>
+
+        <div class="slider-wrap">
+          <label for="earth-radii-slider">Distance (Earth radii)</label>
+          <input
+            id="earth-radii-slider"
+            type="range"
+            min="1.05"
+            max="4.48"
+            step="any"
+            value="1.3228756555"
+          />
+          <div class="slider-meta">
+            <span>Camera distance from Earth center</span>
+            <strong id="earth-radii-value">1.750</strong>
+          </div>
+        </div>
+
+        <div class="slider-wrap">
+          <label for="roll-slider">Roll (degrees)</label>
+          <input
+            id="roll-slider"
+            type="range"
+            min="-180"
+            max="180"
+            step="1"
+            value="0"
+          />
+          <div class="slider-meta">
+            <span>Rotate around viewing axis</span>
+            <strong id="roll-value">0°</strong>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </body>
+</html>
