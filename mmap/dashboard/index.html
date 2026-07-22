@@ -8,14 +8,44 @@
   </head>
   <body>
     <main class="container">
-      <h1>hello world</h1>
-      <label for="geojsonInput">GeoJSON input</label>
-      <textarea id="geojsonInput" placeholder='Paste GeoJSON here, e.g. {"type":"Point","coordinates":[-122.084,37.422]}'></textarea>
+      <header class="toolbar">
+        <label class="tool-picker" for="toolSelect">
+          <span>Tool</span>
+          <select id="toolSelect" aria-label="Select dashboard tool">
+            <option value="geojson-to-gee">geojson 2 gee</option>
+            <option value="globe">ortho globe2proj4string</option>
+          </select>
+        </label>
+      </header>
 
-      <button id="convertBtn" type="button">convert geojson to GEE object</button>
+      <section class="tool-panel is-active" data-tool-panel="geojson-to-gee">
+        <div class="panel-head">
+          <h1>geojson-to-gee.js</h1>
+          <p>Convert pasted GeoJSON into an Earth Engine geometry object.</p>
+        </div>
 
-      <label for="geeOutput">GEE output</label>
-      <textarea id="geeOutput" readonly placeholder="Converted ee.Geometry output appears here"></textarea>
+        <label for="geojsonInput">GeoJSON input</label>
+        <textarea id="geojsonInput" placeholder='Paste GeoJSON here, e.g. {"type":"Point","coordinates":[-122.084,37.422]}'></textarea>
+
+        <button id="convertBtn" type="button">convert geojson to GEE object</button>
+
+        <label for="geeOutput">GEE output</label>
+        <textarea id="geeOutput" readonly placeholder="Converted ee.Geometry output appears here"></textarea>
+      </section>
+
+      <section class="tool-panel" data-tool-panel="globe" hidden>
+        <div class="panel-head">
+          <h1>globe</h1>
+          <p>Projection inspector with the imported orthographic globe UI.</p>
+        </div>
+
+        <iframe
+          id="globeFrame"
+          class="globe-frame"
+          title="Globe projection inspector"
+          src="./globe/index.html"
+        ></iframe>
+      </section>
     </main>
 
     <script type="module" src="./app.js"></script>
