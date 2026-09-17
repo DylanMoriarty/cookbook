@@ -32,6 +32,10 @@ mm --dry-run <command>     # print the shell command without running it
 | `rasterizeShp` | Burn a shapefile to a compressed GeoTIFF (optional color) |
 | `clipShp` | Clip a shapefile to a bounding box |
 | `bluemarble` | Fetch and clip NASA Blue Marble imagery to a GeoJSON bbox |
+| `overpass` | Download a named OpenStreetMap query in a GeoJSON bounding box |
+| `dem` | Download, merge, and clip SRTM or Terrarium elevation data to a GeoTIFF |
+| `biomass` | Clip 300 m global 2010 biomass carbon density to a GeoTIFF |
+| `mediaGeojson` | Export GPS locations from MOV, MP4, HEIC, and JPG files as GeoJSON points |
 
 ### Examples
 
@@ -54,6 +58,33 @@ mm bluemarble --bbox area.geojson --check-only
 # Fetch Blue Marble imagery clipped to a GeoJSON bbox
 mm bluemarble --bbox area.geojson --res 0.01 --out output/blue_marble_clip.tif --layer BlueMarble_ShadedRelief_Bathymetry
 
+# Download all roads to overpass/highways.geojson
+mm overpass area.geojson
+
+# Download a built-in query: allroads, highway, or water
+mm overpass area.geojson water
+
+# Download and clip SRTM 30 m elevation data
+mm dem area.geojson
+
+# Download a coarser SRTM output; source tiles are still 1 arc-second
+mm dem area.geojson --source srtm --res 90 --out dem/srtm_90m.tif
+
+# Download Terrarium tiles; coarser resolutions pick lower zooms and fewer tiles
+mm dem area.geojson --source terrarium --res 500 --out dem/terrarium_500m.tif
+
+# Terrarium also writes a Float32 single-band Blender heightmap next to the output
+# Example: dem/terrarium_500m_blend.tif
+
+# Download the 2010 global above-ground biomass carbon-density layer at native 300 m
+mm biomass area.geojson --out biomass/aboveground_2010.tif
+
+# Download a coarser biomass layer or select below-ground biomass / uncertainty layers
+mm biomass area.geojson --layer belowground --res 1000 --out biomass/belowground_1km.tif
+
+# Export locations and creation timestamps from MOV, MP4, HEIC, and JPG metadata
+mm mediaGeojson media/
+
 # Print a project path shortcut
 mm hot tehran
 
@@ -66,19 +97,19 @@ eval "$(mm hot tehran --cd)"
 Add this to your `~/.zshrc` so `mm hot tehran` changes your current shell directory:
 
 ```zsh
-mmap() {
+mm() {
   if [[ "$1" == "hot" ]]; then
     shift
 
     # Let list/help-style calls behave normally.
     if [[ -z "$1" || "$1" == "--list" || "$1" == "-l" ]]; then
-      command mmap hot "$@"
+      command mm hot "$@"
       return
     fi
 
-    # Ask mmap for a shell-safe cd command and execute it in this shell.
+    # Ask mm for a shell-safe cd command and execute it in this shell.
     local cd_cmd
-    cd_cmd="$(command mmap hot "$1" --cd)" || return
+    cd_cmd="$(command mm hot "$1" --cd)" || return
     eval "$cd_cmd"
     return
   fi
@@ -91,7 +122,7 @@ Then reload your shell:
 
 ```zsh
 source ~/.zshrc
-type mmap    # should say "mmap is a shell function"
+type mm    # should say "mm is a shell function"
 ```
 
 ---
@@ -161,3 +192,4 @@ export function execute(args) {
 
 - Node.js 18+
 - GDAL installed (`brew install gdal`)
+- ExifTool for `mediaGeojson` (`brew install exiftool`)

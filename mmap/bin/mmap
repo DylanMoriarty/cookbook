@@ -59,7 +59,7 @@ if (!mod) {
 }
 
 try {
-  mod.execute(args, { dryRun });
+  await mod.execute(args, { dryRun });
 } catch (err) {
   console.error(chalk.red(`\nError: ${err.message}\n`));
   process.exit(1);

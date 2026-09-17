@@ -16,6 +16,10 @@ import * as hot from "./hot.js";
 import * as quake from "./quake.js";
 import * as bluemarble from "./bluemarble.js";
 import * as dash from "./dashboard.js";
+import * as overpass from "./overpass.js";
+import * as dem from "./dem.js";
+import * as biomass from "./biomass.js";
+import * as mediaGeojson from "./mediaGeojson.js";
 
 export const commands = {
   rasterizeShp,
@@ -25,4 +29,8 @@ export const commands = {
   quake,
   bluemarble,
   dash,
+  overpass,
+  dem,
+  biomass,
+  mediaGeojson,
 };
