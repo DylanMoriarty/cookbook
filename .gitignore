@@ -6,5 +6,6 @@ recipes/weather-factory/gif.gif
 recipes/weather-factory/colorScale.txt
 
 mmap/node_modules
+mmap/utils/hot-paths.js
 
 .DS_Store
